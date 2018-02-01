@@ -24,6 +24,6 @@
 
 # bundler
 /bundle_bin/*
-./vendor/bundle/*
+.vendor/bundle/*
 
 .idea/*
