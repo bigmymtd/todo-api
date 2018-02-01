@@ -24,7 +24,8 @@
 
 # bundler
 /bundle_bin/*
-.vendor/bundle/*
-.vendor/*
-
+/vendor/bundle/*
+/vendor/styledocco/node_modules/*
+/vendor/styledocco/docs/*
+/vendor/styledocco/.sass-cache/*
 .idea/*
