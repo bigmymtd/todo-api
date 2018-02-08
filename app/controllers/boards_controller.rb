@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def show
     id = params[:id].presence || 1
     render json: {
@@ -9,13 +11,19 @@ class BoardsController < ApplicationController
   def index
     render json: {
         status: 200,
-        result: ['aa', 'bb']
+        result: Board.all
     }
   end
 
-  def creat
-    render json: {
-        status: true
-    }
+  def create
+    @board = Board.new(board_name: params[:name])
+    if @board.save
+      render json: {
+          status: 200,
+          result: @board
+      }
+    else
+      render json: 500
+    end
   end
 end
