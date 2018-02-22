@@ -2,16 +2,31 @@ class BoardsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def show
-    id = params[:id].presence || 1
+    @board = Board.find_by(id: params[:id])
+    tasks = @board.task_list.split.map {|task_id| Task.find_by(id: task_id)}
     render json: {
-        status: true
+        status: 200,
+        result: {
+            board_name: @board.board_name,
+            board_id: @board.id,
+            tasks: tasks
+        }
     }
   end
 
   def index
+    boards = Board.all
+    @boards = boards.map do |board|
+      task_list = board.task_list.presence || ''
+      {
+          board_name: board.board_name,
+          board_id: board.id,
+          tasks: task_list.split(',').map {|task_id| Task.find_by(id: task_id)}
+      }
+    end
     render json: {
         status: 200,
-        result: Board.all
+        result: @boards
     }
   end
 
