@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20180205052654) do
   create_table "tasks", force: :cascade do |t|
     t.integer "status"
     t.string "name"
+    t.integer "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_tasks_on_board_id"
   end
 
 end
