@@ -10,29 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205052654) do
-
-  create_table "boards", force: :cascade do |t|
-    t.string "board_name"
-    t.string "task_list"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_180_205_052_654) do
+  create_table 'boards', force: :cascade do |t|
+    t.string 'board_name'
+    t.string 'task_list'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string "name"
-    t.integer "prev_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'statuses', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'prev_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.integer "status"
-    t.string "name"
-    t.integer "board_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_tasks_on_board_id"
+  create_table 'tasks', force: :cascade do |t|
+    t.integer 'status'
+    t.string 'name'
+    t.integer 'board_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['board_id'], name: 'index_tasks_on_board_id'
   end
-
 end
